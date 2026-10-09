@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admission Enquiry | Phoenix International & The Lilliputs</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header" id="siteHeader">
+
+    <a href="index.html" class="logo">
+        <img
+            src="images/logo.png"
+            alt="Phoenix International & The Lilliputs"
+        >
+    </a>
+
+    <nav class="desktop-nav">
+
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="facilities.html">Facilities</a>
+        <a href="academics.html">Academics</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="notice.html">Notice Board</a>
+        <a href="admission.html">Admission</a>
+        <a href="contact.html">Contact Us</a>
+
+    </nav>
+
+
+    <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open Menu"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <ul>
+
+        <li>
+            <a href="index.html#home">Home</a>
+        </li>
+
+        <li>
+            <a href="index.html#about">About Us</a>
+        </li>
+
+        <li>
+            <a href="index.html#facilities">Facilities</a>
+        </li>
+
+        <li>
+            <a href="index.html#academics">Academics</a>
+        </li>
+
+        <li>
+            <a href="index.html#gallery">Gallery</a>
+        </li>
+
+        <li>
+            <a href="index.html#notice">Notice Board</a>
+        </li>
+
+        <li>
+            <a href="index.html#admission">Admission</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact Us</a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADMISSION ENQUIRY PAGE
+===================================================== -->
+
+<main class="enquiry-page">
+
+
+    <!-- PAGE HEADING -->
+
+    <div class="enquiry-heading">
+
+        <p class="section-label">
+            ADMISSIONS
+        </p>
+
+        <h1>
+            Admission <em>Enquiry</em>
+        </h1>
+
+        <p>
+            Interested in joining Phoenix International &
+            The Lilliputs? Send us your enquiry and our
+            team will get in touch with you.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         ENQUIRY FORM
+    ================================================== -->
+
+    <div class="enquiry-form-container">
+
+        <form
+            class="enquiry-form"
+            id="enquiryForm"
+        >
+
+
+            <!-- STUDENT + PARENT -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="studentName">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        name="studentName"
+                        placeholder="Enter student's name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="parentName">
+                        Parent / Guardian Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="parentName"
+                        name="parentName"
+                        placeholder="Enter parent or guardian name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT + EMAIL -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Contact Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter 10-digit mobile number"
+                        inputmode="numeric"
+                        maxlength="10"
+                        autocomplete="tel"
+                        required
+                    >
+
+                    <small
+                        id="phoneError"
+                        class="phone-error"
+                    >
+                        Please enter a valid 10-digit Indian mobile number.
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter email address"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CLASS -->
+
+            <div class="form-group">
+
+                <label for="class">
+                    Class Applying For
+                </label>
+
+                <select
+                    id="class"
+                    name="class"
+                    required
+                >
+
+                    <option value="">
+                        Select Class
+                    </option>
+
+                    <option value="Playgroup">
+                        Playgroup
+                    </option>
+
+                    <option value="Nursery">
+                        Nursery
+                    </option>
+
+                    <option value="Junior KG">
+                        Junior KG
+                    </option>
+
+                    <option value="Senior KG">
+                        Senior KG
+                    </option>
+
+                    <option value="Grade 1">
+                        Grade 1
+                    </option>
+
+                    <option value="Grade 2">
+                        Grade 2
+                    </option>
+
+                    <option value="Grade 3">
+                        Grade 3
+                    </option>
+
+                    <option value="Grade 4">
+                        Grade 4
+                    </option>
+
+                    <option value="Grade 5">
+                        Grade 5
+                    </option>
+
+                    <option value="Grade 6">
+                        Grade 6
+                    </option>
+
+                    <option value="Grade 7">
+                        Grade 7
+                    </option>
+
+                    <option value="Grade 8">
+                        Grade 8
+                    </option>
+
+                    <option value="Grade 9">
+                        Grade 9
+                    </option>
+
+                    <option value="Grade 10">
+                        Grade 10
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- ENQUIRY -->
+
+            <div class="form-group">
+
+                <label for="message">
+                    Your Enquiry
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Write your enquiry here..."
+                    required
+                ></textarea>
+
+                <small
+                    id="messageError"
+                    class="field-error"
+                >
+                    Please enter your enquiry.
+                </small>
+
+            </div>
+
+
+
+            <!-- SUBMIT BUTTON -->
+
+            <button
+                type="submit"
+                class="enquiry-submit"
+            >
+
+                Submit Enquiry
+
+                <span>→</span>
+
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        © 2026 Phoenix International & The Lilliputs.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- MAIN SCRIPT -->
+
+<script src="script.js"></script>
+
+
+
+<!-- =====================================================
+     FORM VALIDATION
+===================================================== -->
+
+<script>
+
+const enquiryForm = document.getElementById("enquiryForm");
+
+const phoneInput = document.getElementById("phone");
+const phoneError = document.getElementById("phoneError");
+
+const messageInput = document.getElementById("message");
+const messageError = document.getElementById("messageError");
+
+
+
+/* =====================================================
+   CONTACT NUMBER
+===================================================== */
+
+phoneInput.addEventListener("input", function () {
+
+    /*
+       Allow only numbers
+    */
+
+    this.value = this.value.replace(/[^0-9]/g, "");
+
+
+    /*
+       Empty field
+    */
+
+    if (this.value === "") {
+
+        phoneError.style.display = "none";
+
+        this.setCustomValidity("");
+
+        return;
+    }
+
+
+    
+
+    if (/^[6-9][0-9]{9}$/.test(this.value)) {
+
+        phoneError.style.display = "none";
+
+        this.setCustomValidity("");
+
+    }
+
+    else {
+
+        phoneError.style.display = "block";
+
+        this.setCustomValidity(
+            "Please enter a valid 10-digit Indian mobile number."
+        );
+
+    }
+
+});
+
+
+
+/* =====================================================
+   ENQUIRY MESSAGE
+===================================================== */
+
+messageInput.addEventListener("input", function () {
+
+    
+
+    const message = this.value.trim();
+
+
+    if (message === "") {
+
+        messageError.style.display = "block";
+
+        this.setCustomValidity(
+            "Please enter your enquiry."
+        );
+
+    }
+
+    else {
+
+        messageError.style.display = "none";
+
+        this.setCustomValidity("");
+
+    }
+
+});
+
+
+
+/* =====================================================
+   FORM SUBMIT
+===================================================== */
+
+enquiryForm.addEventListener("submit", function (event) {
+
+    const phone = phoneInput.value.trim();
+    const message = messageInput.value.trim();
+
+
+    /*
+       Check contact number
+    */
+
+    if (!/^[6-9][0-9]{9}$/.test(phone)) {
+
+        event.preventDefault();
+
+        phoneError.style.display = "block";
+
+        phoneInput.setCustomValidity(
+            "Please enter a valid 10-digit Indian mobile number."
+        );
+
+        phoneInput.focus();
+
+        return;
+    }
+
+
+    /*
+       Check enquiry
+    */
+
+    if (message === "") {
+
+        event.preventDefault();
+
+        messageError.style.display = "block";
+
+        messageInput.setCustomValidity(
+            "Please enter your enquiry."
+        );
+
+        messageInput.focus();
+
+        return;
+    }
+
+
+    /*
+       Valid contact number
+    */
+
+    phoneError.style.display = "none";
+
+    phoneInput.setCustomValidity("");
+
+
+    /*
+       Valid enquiry
+    */
+
+    messageError.style.display = "none";
+
+    messageInput.setCustomValidity("");
+
+
+    
+
+    event.preventDefault();
+
+    alert(
+        "Your admission enquiry has been submitted successfully."
+    );
+
+});
+
+</script>
+
+
+</body>
+</html>

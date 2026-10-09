@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Staff List | Phoenix International & The Lilliputs</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- =====================================================
+         STAFF POPUP CSS
+    ====================================================== -->
+
+    <style>
+
+        /* POPUP BACKGROUND */
+
+        .staff-popup {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            visibility: hidden;
+
+            opacity: 0;
+
+            z-index: 999999;
+
+            transition:
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+
+        }
+
+
+        /* POPUP ACTIVE */
+
+        .staff-popup.active {
+
+            visibility: visible;
+
+            opacity: 1;
+
+        }
+
+
+        /* DARK BACKGROUND */
+
+        .staff-popup-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: rgba(18, 60, 58, 0.70);
+
+            backdrop-filter: blur(6px);
+
+            -webkit-backdrop-filter: blur(6px);
+
+            cursor: pointer;
+
+        }
+
+
+        /* POPUP BOX */
+
+        .staff-popup-box {
+
+            position: relative;
+
+            width: min(950px, 95%);
+
+            max-height: 90vh;
+
+            background: #f7f4ec;
+
+            z-index: 2;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.30);
+
+            transform:
+                translateY(50px)
+                scale(0.94);
+
+            opacity: 0;
+
+            transition:
+                transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.35s ease;
+
+        }
+
+
+        /* POPUP OPEN ANIMATION */
+
+        .staff-popup.active .staff-popup-box {
+
+            transform:
+                translateY(0)
+                scale(1);
+
+            opacity: 1;
+
+        }
+
+
+        /* POPUP CONTENT */
+
+        .staff-popup-content {
+
+            display: grid;
+
+            grid-template-columns: 42% 58%;
+
+            max-height: 90vh;
+
+        }
+
+
+        /* POPUP IMAGE */
+
+        .staff-popup-image {
+
+            min-height: 500px;
+
+            background: #e8e5dc;
+
+            overflow: hidden;
+
+        }
+
+
+        .staff-popup-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            object-position: center;
+
+        }
+
+
+        /* POPUP INFORMATION */
+
+        .staff-popup-info {
+
+            padding: 60px 55px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            overflow-y: auto;
+
+            max-height: 90vh;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .popup-label {
+
+            margin: 0 0 18px;
+
+            color: #f2a65a;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .staff-popup-info h2 {
+
+            margin: 0 0 15px;
+
+            color: #123c3a;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 38px;
+
+            line-height: 1.15;
+
+        }
+
+
+        .popup-role {
+
+            margin: 0 0 25px;
+
+            color: #2f6f68;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+        }
+
+
+        .popup-description {
+
+            margin: 0;
+
+            color: #666;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 16px;
+
+            line-height: 1.9;
+
+        }
+
+
+        /* CLOSE BUTTON */
+
+        .staff-popup-close {
+
+            position: absolute;
+
+            top: 18px;
+
+            right: 18px;
+
+            width: 42px;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: #123c3a;
+
+            font-size: 28px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.15);
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
+
+        }
+
+
+        .staff-popup-close:hover {
+
+            transform: rotate(90deg);
+
+            background: #f2a65a;
+
+            color: white;
+
+        }
+
+
+        /* VIEW MORE BUTTON */
+
+        .view-more-btn {
+
+            margin-top: 18px;
+
+            padding: 10px 0;
+
+            border: none;
+
+            border-bottom: 1px solid #f2a65a;
+
+            background: transparent;
+
+            color: #123c3a;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+        .view-more-btn span {
+
+            font-size: 18px;
+
+            transition:
+                transform 0.3s ease;
+
+        }
+
+
+        .view-more-btn:hover {
+
+            color: #f2a65a;
+
+        }
+
+
+        .view-more-btn:hover span {
+
+            transform: translateX(5px);
+
+        }
+
+
+        /* =================================================
+           MOBILE POPUP
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+            .staff-popup {
+
+                padding: 15px;
+
+            }
+
+
+            .staff-popup-box {
+
+                width: 100%;
+
+                max-height: 90vh;
+
+                overflow-y: auto;
+
+            }
+
+
+            .staff-popup-content {
+
+                display: block;
+
+                max-height: none;
+
+            }
+
+
+            .staff-popup-image {
+
+                width: 100%;
+
+                height: 280px;
+
+                min-height: 280px;
+
+            }
+
+
+            .staff-popup-image img {
+
+                width: 100%;
+
+                height: 100%;
+
+                object-fit: contain;
+
+                background: #e8e5dc;
+
+            }
+
+
+            .staff-popup-info {
+
+                padding: 35px 25px 40px;
+
+                max-height: none;
+
+                overflow: visible;
+
+            }
+
+
+            .popup-label {
+
+                font-size: 11px;
+
+                margin-bottom: 12px;
+
+            }
+
+
+            .staff-popup-info h2 {
+
+                font-size: 30px;
+
+                line-height: 1.15;
+
+                margin-bottom: 15px;
+
+            }
+
+
+            .popup-role {
+
+                font-size: 14px;
+
+                margin-bottom: 20px;
+
+            }
+
+
+            .popup-description {
+
+                font-size: 14px;
+
+                line-height: 1.8;
+
+            }
+
+
+            .staff-popup-close {
+
+                width: 38px;
+
+                height: 38px;
+
+                top: 12px;
+
+                right: 12px;
+
+                font-size: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header" id="siteHeader">
+
+    <a href="index.html" class="logo">
+
+        <img
+            src="images/logo.png"
+            alt="Phoenix International School Logo"
+        >
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+        <a href="index.html#home">Home</a>
+
+        <a href="index.html#about">About Us</a>
+
+        <a href="index.html#facilities">Facilities</a>
+
+        <a href="index.html#academics">Academics</a>
+
+        <a href="index.html#gallery">Gallery</a>
+
+        <a href="index.html#notice">Notice Board</a>
+
+        <a href="index.html#admission">Admission</a>
+
+        <a href="contact.html">Contact Us</a>
+
+    </nav>
+
+
+    <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open Menu"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <ul>
+
+        <li>
+            <a href="index.html#home">Home</a>
+        </li>
+
+        <li>
+            <a href="index.html#about">About Us</a>
+        </li>
+
+        <li>
+            <a href="index.html#facilities">Facilities</a>
+        </li>
+
+        <li>
+            <a href="index.html#academics">Academics</a>
+        </li>
+
+        <li>
+            <a href="index.html#gallery">Gallery</a>
+        </li>
+
+        <li>
+            <a href="index.html#notice">Notice Board</a>
+        </li>
+
+        <li>
+            <a href="index.html#admission">Admission</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact Us</a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+<!-- =====================================================
+     PAGE HERO
+===================================================== -->
+
+<section class="inner-page-hero">
+
+    <div class="inner-page-content">
+
+        <p class="section-label">
+            OUR LEADERSHIP
+        </p>
+
+        <h1>
+            Meet our <em>Team</em>
+        </h1>
+
+        <p>
+            Meet the dedicated team behind Phoenix International
+            & The Lilliputs.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STAFF PAGE
+===================================================== -->
+
+<main class="staff-page">
+
+
+    <!-- =================================================
+         CORE TEAM
+    ================================================== -->
+
+    <section class="staff-section">
+
+        <div class="staff-heading">
+
+            <p class="section-label">
+                OUR LEADERSHIP
+            </p>
+
+            <h2>
+                Core <em>Team</em>
+            </h2>
+
+            <p>
+                Our core team provides leadership and guidance
+                to create a positive learning environment for
+                every student.
+            </p>
+
+        </div>
+
+
+
+        <div class="core-team-grid">
+
+
+            <!-- =================================================
+                 CORE TEAM MEMBER 1
+            ================================================== -->
+
+            <article class="team-card">
+
+                <div class="team-image">
+
+                    <img
+                        src="images/core-team-1.jpg"
+                        alt="Core Team Member 1"
+                    >
+
+                </div>
+
+
+                <div class="team-info">
+
+                    <h3>
+                        shri Avneesh Singh
+                    </h3>
+
+                    <p>
+                        (Chairman)
+                    </p>
+
+
+                    <button
+                        class="view-more-btn"
+                        type="button"
+                        data-name="Shri Avneesh Singh"
+                        data-role="Chairman"
+                        data-image="images/core-team-1.jpg"
+                        data-description="Our belief in the philosophy, Satyam Shivam Sundaram, has been the energizing force behind every initiative taken by the management to ensure that all schools under our aegis contribute to the field of education and the global cause. With a team of dynamic, qualified and trained teachers, we are certain that we will reach greater heights in the near future."
+                    >
+
+                        View More
+
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 CORE TEAM MEMBER 2
+            ================================================== -->
+
+            <article class="team-card">
+
+                <div class="team-image">
+
+                    <img
+                        src="images/core-team-2.jpg"
+                        alt="Core Team Member 2"
+                    >
+
+                </div>
+
+
+                <div class="team-info">
+
+                    <h3>
+                        Ms. Rahel Sachin Khandagale
+                    </h3>
+
+                    <p>
+                        (principal)
+                    </p>
+
+
+                    <button
+                        class="view-more-btn"
+                        type="button"
+                        data-name="Ms. Rahel Sachin Khandagale"
+                        data-role="Principal"
+                        data-image="images/core-team-2.jpg"
+                        data-description="Phoenix International And The Lilliputs has a remarkable journey of progress and growth. For us, progress means maintaining high standards, building strong relationships, developing good values, and nurturing every child with care and compassion. With the support of our dedicated teachers, staff and management, we continue to create a positive learning environment. Our aim is to guide students towards becoming confident, responsible and successful individuals while achieving the educational goals of an ever-changing world.Our principal is a dedicated and experienced educator who leads our school with passion and commitment. She works closely with teachers, students and parents to create a positive learning environment that fosters academic growth, creativity and personal development. Her vision and leadership help ensure that every student receives the support and guidance they need to succeed."
+                    >
+
+                        View More
+
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STAFF
+    ================================================== -->
+
+    <section class="staff-section staff-members-section">
+
+
+        <div class="staff-heading">
+
+            <p class="section-label">
+                OUR STAFF
+            </p>
+
+            <h2>
+                Meet our <em>Staff</em>
+            </h2>
+
+            <p>
+                Our teachers and staff members work together
+                to support students in their academic and
+                personal growth.
+            </p>
+
+        </div>
+
+
+
+        <div class="staff-grid">
+
+
+            <!-- =================================================
+                 STAFF 1
+            ================================================== -->
+
+            <article class="team-card">
+
+                <div class="team-image">
+
+                    <img
+                        src="images/staff-1.jpg"
+                        alt="Staff Member"
+                    >
+
+                </div>
+
+
+                <div class="team-info">
+
+                    <h3>
+                        Staff Member
+                    </h3>
+
+                    <p>
+                        Teacher
+                    </p>
+
+
+        
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 STAFF 2
+            ================================================== -->
+
+            <article class="team-card">
+
+                <div class="team-image">
+
+                    <img
+                        src="images/staff-2.jpg"
+                        alt="Staff Member"
+                    >
+
+                </div>
+
+
+                <div class="team-info">
+
+                    <h3>
+                        Staff Member
+                    </h3>
+
+                    <p>
+                        Teacher
+                    </p>
+
+
+                
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     ONLY ONE STAFF POPUP
+===================================================== -->
+
+<div
+    class="staff-popup"
+    id="staffPopup"
+>
+
+    <!-- DARK BACKGROUND -->
+
+    <div
+        class="staff-popup-overlay"
+        id="staffPopupOverlay"
+    ></div>
+
+
+    <!-- POPUP BOX -->
+
+    <div class="staff-popup-box">
+
+
+        <!-- CLOSE BUTTON -->
+
+        <button
+            class="staff-popup-close"
+            id="staffPopupClose"
+            type="button"
+            aria-label="Close"
+        >
+
+            &times;
+
+        </button>
+
+
+
+        <div class="staff-popup-content">
+
+
+            <!-- POPUP IMAGE -->
+
+            <div class="staff-popup-image">
+
+                <img
+                    id="popupStaffImage"
+                    src=""
+                    alt="Staff Member"
+                >
+
+            </div>
+
+
+
+            <!-- POPUP INFORMATION -->
+
+            <div class="staff-popup-info">
+
+                <p class="popup-label">
+                    STAFF MEMBER
+                </p>
+
+
+                <h2 id="popupStaffName">
+                </h2>
+
+
+                <p
+                    class="popup-role"
+                    id="popupStaffRole"
+                >
+                </p>
+
+
+                <p
+                    class="popup-description"
+                    id="popupStaffDescription"
+                >
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+
+        © 2026 Phoenix International & The Lilliputs.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MAIN JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+
+<!-- =====================================================
+     STAFF POPUP SCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =================================================
+       STAFF POPUP ELEMENTS
+    ================================================= */
+
+    const staffPopup =
+        document.getElementById("staffPopup");
+
+    const staffPopupOverlay =
+        document.getElementById("staffPopupOverlay");
+
+    const staffPopupClose =
+        document.getElementById("staffPopupClose");
+
+    const popupStaffImage =
+        document.getElementById("popupStaffImage");
+
+    const popupStaffName =
+        document.getElementById("popupStaffName");
+
+    const popupStaffRole =
+        document.getElementById("popupStaffRole");
+
+    const popupStaffDescription =
+        document.getElementById("popupStaffDescription");
+
+    const viewMoreButtons =
+        document.querySelectorAll(".view-more-btn");
+
+
+    /* =================================================
+       CHECK POPUP
+    ================================================= */
+
+    if (
+        !staffPopup ||
+        !staffPopupOverlay ||
+        !staffPopupClose ||
+        !popupStaffImage ||
+        !popupStaffName ||
+        !popupStaffRole ||
+        !popupStaffDescription
+    ) {
+
+        console.log("Staff popup elements not found.");
+
+        return;
+
+    }
+
+
+    /* =================================================
+       OPEN POPUP
+    ================================================= */
+
+    viewMoreButtons.forEach(function (button) {
+
+        button.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            /* GET DATA */
+
+            const name =
+                button.getAttribute("data-name");
+
+            const role =
+                button.getAttribute("data-role");
+
+            const image =
+                button.getAttribute("data-image");
+
+            const description =
+                button.getAttribute("data-description");
+
+
+            /* PUT DATA INSIDE POPUP */
+
+            popupStaffName.textContent =
+                name || "Staff Member";
+
+            popupStaffRole.textContent =
+                role || "Teacher";
+
+            popupStaffDescription.textContent =
+                description ||
+                "Staff description will appear here.";
+
+            popupStaffImage.src =
+                image || "";
+
+            popupStaffImage.alt =
+                name || "Staff Member";
+
+
+            /* OPEN POPUP */
+
+            staffPopup.classList.add("active");
+
+
+            /* STOP BACKGROUND SCROLL */
+
+            document.body.style.overflow = "hidden";
+
+        });
+
+    });
+
+
+    /* =================================================
+       CLOSE POPUP
+    ================================================= */
+
+    function closeStaffPopup() {
+
+        staffPopup.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    /* CLOSE USING X */
+
+    staffPopupClose.addEventListener(
+        "click",
+        closeStaffPopup
+    );
+
+
+    /* CLOSE USING DARK BACKGROUND */
+
+    staffPopupOverlay.addEventListener(
+        "click",
+        closeStaffPopup
+    );
+
+
+    /* CLOSE USING ESCAPE */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                staffPopup.classList.contains("active")
+            ) {
+
+                closeStaffPopup();
+
+            }
+
+        }
+    );
+
+
+});
+
+</script>
+
+
+</body>
+
+</html>

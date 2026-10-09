@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phoenix International & The Lilliputs</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header" id="siteHeader">
+
+    <!-- LOGO -->
+
+    <a href="index.html" class="logo">
+
+        <img
+            src="images/logo.png"
+            alt="Phoenix International School Logo"
+        >
+
+    </a>
+
+    <!-- SECOND LOGO -->
+
+<a href="index.html" class="logo-2">
+
+    <img
+        src="images/logo-2.jpg"
+        alt="School Logo"
+    >
+
+</a>
+
+
+    <!-- DESKTOP NAVIGATION -->
+
+    <nav class="desktop-nav">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About Us</a>
+
+        <a href="facilities.html">Facilities</a>
+
+        <a href="academics.html">Academics</a>
+
+        <a href="gallery.html">Gallery</a>
+
+        <a href="notice.html">Notice Board</a>
+
+        <a href="admission.html">Admission</a>
+
+        <a href="contact.html">Contact Us</a>
+
+    </nav>
+
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <ul>
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="about.html">About Us</a>
+        </li>
+
+        <li>
+            <a href="admission.html">Admission</a>
+        </li>
+
+        <li>
+            <a href="facilities.html">Facilities</a>
+        </li>
+
+        <li>
+            <a href="academics.html">Academics</a>
+        </li>
+
+        <li>
+            <a href="gallery.html">Gallery</a>
+        </li>
+
+        <li>
+            <a href="notice.html">Notice Board</a>
+        </li>
+
+        <li>
+            <a href="contact.html">Contact Us</a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section class="gallery-section" id="gallery">
+
+
+    <!-- =====================================================
+     DYNAMIC GALLERY
+===================================================== -->
+
+<section class="gallery-section" id="gallery">
+
+    <div class="gallery-header">
+
+        <div>
+
+            <p class="section-label">
+                SCHOOL GALLERY
+            </p>
+
+            <h2>
+                Moments worth
+                <em>remembering.</em>
+            </h2>
+
+        </div>
+
+
+        <p class="gallery-intro">
+
+            Take a glimpse into school life,
+            activities, celebrations and memorable
+            moments from our campus.
+
+        </p>
+
+    </div>
+
+
+    <!-- Gallery Filters -->
+
+    <div class="gallery-filters">
+
+        <button class="gallery-filter active" data-filter="all">
+            All
+        </button>
+
+        <button class="gallery-filter" data-filter="events">
+            Events
+        </button>
+
+        <button class="gallery-filter" data-filter="activities">
+            Activities
+        </button>
+
+        <button class="gallery-filter" data-filter="campus">
+            Campus
+        </button>
+
+    </div>
+
+
+    <!-- Gallery -->
+
+    <div class="gallery-grid" id="galleryGrid">
+
+
+        <!-- Image 1 -->
+
+        <div class="gallery-item gallery-large"
+             data-category="campus">
+
+            <img
+                src="images/gallery1.jpg"
+                alt="Phoenix School Campus"
+            >
+
+            <div class="gallery-overlay">
+
+                <span>Campus</span>
+
+                <h3>
+                    Our Learning Environment
+                </h3>
+
+                <button class="gallery-view">
+                    View ↗
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Image 2 -->
+
+        <div class="gallery-item"
+             data-category="events">
+
+            <img
+                src="images/gallery2.jpg"
+                alt="School Event"
+            >
+
+            <div class="gallery-overlay">
+
+                <span>Events</span>
+
+                <h3>
+                    School Celebrations
+                </h3>
+
+                <button class="gallery-view">
+                    View ↗
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Image 3 -->
+
+        <div class="gallery-item"
+             data-category="activities">
+
+            <img
+                src="images/gallery3.jpg"
+                alt="Student Activity"
+            >
+
+            <div class="gallery-overlay">
+
+                <span>Activities</span>
+
+                <h3>
+                    Student Activities
+                </h3>
+
+                <button class="gallery-view">
+                    View ↗
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Image 4 -->
+
+        <div class="gallery-item"
+             data-category="events">
+
+            <img
+                src="images/gallery4.jpg"
+                alt="School Celebration"
+            >
+
+            <div class="gallery-overlay">
+
+                <span>Events</span>
+
+                <h3>
+                    Special Moments
+                </h3>
+
+                <button class="gallery-view">
+                    View ↗
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Image 5 -->
+
+        <div class="gallery-item"
+             data-category="activities">
+
+            <img
+                src="images/gallery5.jpg"
+                alt="School Activity"
+            >
+
+            <div class="gallery-overlay">
+
+                <span>Activities</span>
+
+                <h3>
+                    Learning Beyond Classroom
+                </h3>
+
+                <button class="gallery-view">
+                    View ↗
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+<!-- =====================================================
+     IMAGE LIGHTBOX
+===================================================== -->
+
+<div class="gallery-lightbox" id="galleryLightbox">
+
+    <button class="lightbox-close" id="lightboxClose">
+        
+    </button>
+
+    <button class="lightbox-prev" id="lightboxPrev">
+        ←
+    </button>
+
+    <img id="lightboxImage" src="" alt="Gallery Image">
+
+    <button class="lightbox-next" id="lightboxNext">
+        →
+    </button>
+<script src="script.js"></script>
+</div>
+
